@@ -17,13 +17,13 @@ $( document ).ready(function() {
     }
 
     // socket used for real time games
-    var socket = io('http://localhost:3000', { query: 'user=' + username });
+    var socket = io(window.location.protocol+"//"+window.location.hostname, { query: 'user=' + username });
 
     //socket used to broadcast live games on tv page
-    var tvSocket = io('http://localhost:3000/tv');
+    var tvSocket = io(window.location.protocol+"//"+window.location.hostname+"/tv");
 
     // socket used to broadcast events to monitoring page
-    var monitorSocket = io('http://localhost:3000/monitor');
+    var monitorSocket = io(window.location.protocol+"//"+window.location.hostname+"/monitor");
 
     // Puzzle of the day: initialize a chess board with puzzle data
     if ($("#pod").length) {
@@ -254,7 +254,7 @@ $( document ).ready(function() {
          * When a new game is created, the game creator should wait for an opponent to join the game
          */
         socket.on('wait', function () {
-            var url = "http:/localhost:3000/game/" + token + "/" + opponentSide;
+            var url = window.location.protocol+"//"+window.location.hostname+"/game/" + token + "/" + opponentSide;
             $('#gameUrl').html(url);
             $('#gameUrlPopup').modal({ // show modal popup to wait for opponent
                 keyboard: false,
