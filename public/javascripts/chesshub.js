@@ -419,7 +419,7 @@ $( document ).ready(function() {
         $( "#searchGameFormSubmit" ).on("click", function( event ) {
             $.ajax({
                 type: "POST",
-                url: "http://localhost:3000/search",
+                url: window.location.protocol+"//"+window.location.hostname+"/search",
                 data: {
                     white: $( "input[name$='white']" ).val(),
                     black: $( "input[name$='black']" ).val(),
